@@ -13,7 +13,7 @@ $border-default: 1px solid #EAEAEA;
 }
 
 /* ================STYLE================ */
-
+/* Global Style */
 * {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -29,7 +29,7 @@ body {
     color: $primary-font-color;
 }
 p {
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
 }
 h2 {
@@ -60,16 +60,25 @@ a {
     line-height: 1;
     border-radius: 3px;
 }
+.o-icon {
+    display: inline-block;
+}
+.icon--sm {
+    width: 24px;
+    width: 24px;
+}
+
+/* Header Hero */
 .c-hero {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background-image: linear-gradient(265deg,#fd9714,#f9423a);
+    background-image: linear-gradient(265deg,#fd9714,#f9423a, #f82e23);
     position: relative;
     max-height: 600px;
     .c-bg-img {
         width: 100%;
-        opacity: .3;
+        opacity: .4;
     }
     .c-hero__wrapper {
         position: absolute;
@@ -96,9 +105,16 @@ a {
         }
     }
     .c-hero__content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 40px;
+        h2 {
+            margin-bottom: 180px;
+        }
     }
 }
 .c-hero-header {
@@ -125,28 +141,44 @@ a {
         }
     }
 }
-.c-mission,
-.c-vacancy {
+
+/* Mission */
+.c-mission{
     padding: 80px;
     display: flex;
-}
-.c-footer {
-    padding: 0 150px 32px;
-    .c-footer__content {
-        display: flex;
-        justify-content: space-between;
-        border-top: $border-default;
-        font-size: 12px;
-        color: $secondary-font-color;
-        padding: 16px 0;
+    .c-mission__title {
+        flex-basis: 376px;
+        flex-grow: 0;
+        flex-shrink: 1;
+        h2 {
+            max-width: 200px;
+        }
     }
-    ul {
-        @extend %list-flex;
+    .c-mission__desc {
+        flex: 1;
+        color: $secondary-font-color;
+        p {
+            margin-bottom: 16px;
+        }
     }
 }
 
+/* Vacancy */
 .c-vacancy {
+    padding: 80px;
+    display: flex;
     background-color: $accent-grey-color;
+    .c-vacancy__title {
+        flex-basis: 376px;
+        flex-grow: 0;
+        flex-shrink: 1;
+        h2 {
+            max-width: 200px;
+        }
+    }
+    .c-vacancy__lists {
+        flex: 1;
+    }
 }
 .c-vacancy-card {
     display: flex;
@@ -182,6 +214,32 @@ a {
         }
         li:last-child:after {
             display: none;
+        }
+    }
+}
+
+/* Footer */
+.c-footer {
+    padding: 0 150px 32px;
+    background-color: $accent-grey-color;
+    .c-footer__content {
+        display: flex;
+        justify-content: space-between;
+        border-top: $border-default;
+        color: $secondary-font-color;
+        padding: 16px 0;
+    }
+    p {
+        font-size: 14px;
+    }
+    ul {
+        @extend %list-flex;
+        align-items: center;
+        p {
+            margin-right: 8px;
+        }
+        li {
+            margin: 0 4px;
         }
     }
 }
