@@ -63,7 +63,7 @@ a {
 .c-hero {
   overflow: hidden;
   position: relative;
-  background-image: url("assets/images/background.jpg");
+  background-image: url("../../../assets/images/background.jpg");
   background-size: cover;
   background-position: center;
   height: 600px; }
