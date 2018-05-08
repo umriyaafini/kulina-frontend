@@ -5,6 +5,13 @@ $primary-font-color: #373D3F;
 $secondary-font-color: #758185;
 $border-default: 1px solid #EAEAEA;
 
+
+$max-width-wrapper: 1200px;
+$padding-r-l-wrapper: 80px;
+$padding-t-b-wrapper: 48px;
+$padding-r-l-wrapper-mobile: 24px;
+$padding-t-b-wrapper-mobile: 40px;
+
 %list-flex {
     display: flex;
     list-style: none;
@@ -46,13 +53,14 @@ a {
 .o-btn {
     display: inline-block;
     border: none;
-    &:hover {
-
-    }
 }
 .btn--primary {
     background-color: $primary-color;
     color: white;
+    transition: 3ms;
+    &:hover {
+        background-color: darken($primary-color, 5%);
+    }
 }
 .btn--md {
     font-size: 14px;
@@ -83,11 +91,13 @@ a {
     .c-hero__wrapper {
         position: absolute;
         top: 0;
-        left: 0;
+        left: 50%;
         width: 100%;
         height: 100%;
         background-size: cover;
         z-index: 1;
+        max-width: $max-width-wrapper;
+        transform: translateX(-50%);
         h2 {
             color: white;
         }
@@ -140,18 +150,53 @@ a {
             }
         }
     }
+    .c-menu-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .c-menu-mobile {
+        display: inline-block !important;
+    }
+    .c-nav-mobile {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        flex-direction: column;
+        right: 32px;
+        background-color: white;
+        border-radius: 3px;
+        -webkit-box-shadow: 0 0 24px 0 rgba(146, 146, 146, 0.4);
+        -moz-box-shadow: 0 0 24px 0 rgba(146, 146, 146, 0.4);
+        box-shadow: 0 0 24px 0 rgba(146, 146, 146, 0.4);
+        transition: visibility 0s, opacity 0.5s linear;
+        li {
+            padding: 16px 32px !important;
+        }
+        li a {
+            color: $primary-color;
+        }
+    }
+    .c-nav-mobile.is-active {
+        visibility: visible !important;
+        opacity: 1;
+    }
 }
 
 /* Mission */
-.c-mission{
-    padding: 80px;
+.c-mission__wrapper {
     display: flex;
+    max-width: $max-width-wrapper;
+    padding: $padding-t-b-wrapper $padding-r-l-wrapper;
+    margin: 0 auto;
     .c-mission__title {
         flex-basis: 376px;
         flex-grow: 0;
         flex-shrink: 1;
         h2 {
             max-width: 200px;
+            margin-bottom: 16px;
         }
     }
     .c-mission__desc {
@@ -159,21 +204,39 @@ a {
         color: $secondary-font-color;
         p {
             margin-bottom: 16px;
+            min-width: 432px;
         }
+    }
+}
+@media (max-width: 767px) {
+    .c-mission__wrapper {
+        padding: $padding-t-b-wrapper-mobile $padding-r-l-wrapper-mobile;
+        flex-direction: column;
+    }
+    .c-mission__title {
+        flex: 1 !important;
+    }
+    .c-mission__desc p {
+        min-width: initial !important;
     }
 }
 
 /* Vacancy */
 .c-vacancy {
-    padding: 80px;
-    display: flex;
     background-color: $accent-grey-color;
+}
+.c-vacancy__wrapper {
+    display: flex;
+    max-width: $max-width-wrapper;
+    padding: $padding-t-b-wrapper $padding-r-l-wrapper;
+    margin: 0 auto;
     .c-vacancy__title {
         flex-basis: 376px;
         flex-grow: 0;
         flex-shrink: 1;
         h2 {
             max-width: 200px;
+            margin-bottom: 16px;
         }
     }
     .c-vacancy__lists {
@@ -218,16 +281,34 @@ a {
     }
 }
 
+@media (max-width: 767px) {
+    .c-vacancy__wrapper {
+        padding: $padding-t-b-wrapper-mobile $padding-r-l-wrapper-mobile;
+        flex-direction: column;
+    }
+    .c-vacancy__title {
+        flex: 1 !important;
+    }
+    .c-vacancy-card {
+        flex-direction: column;
+        padding: 16px;
+    }
+    .c-vacancy-card__cta {
+        padding-top: 8px;
+    }
+}
+
 /* Footer */
 .c-footer {
-    padding: 0 150px 32px;
     background-color: $accent-grey-color;
-    .c-footer__content {
+    .c-footer__wrapper {
         display: flex;
         justify-content: space-between;
         border-top: $border-default;
         color: $secondary-font-color;
-        padding: 16px 0;
+        max-width: $max-width-wrapper;
+        padding: 16px $padding-r-l-wrapper;
+        margin: 0 auto;
     }
     p {
         font-size: 14px;
@@ -240,6 +321,18 @@ a {
         }
         li {
             margin: 0 4px;
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .c-footer__wrapper {
+        flex-direction: column;
+        align-items: center;
+
+        ul {
+            margin-top: 16px;
         }
     }
 }
