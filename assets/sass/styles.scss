@@ -12,6 +12,9 @@ $padding-t-b-wrapper: 48px;
 $padding-r-l-wrapper-mobile: 24px;
 $padding-t-b-wrapper-mobile: 40px;
 
+$height-header: 600px;
+$height-header-mobile: 600px;
+
 %list-flex {
     display: flex;
     list-style: none;
@@ -78,26 +81,19 @@ a {
 
 /* Header Hero */
 .c-hero {
-    display: flex;
-    flex-direction: column;
     overflow: hidden;
-    background-image: linear-gradient(265deg,#fd9714,#f9423a, #f82e23);
     position: relative;
-    max-height: 600px;
-    .c-bg-img {
-        width: 100%;
-        opacity: .4;
-    }
+    background-image:url('/assets/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: $height-header;
     .c-hero__wrapper {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 100%;
         height: 100%;
-        background-size: cover;
-        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         max-width: $max-width-wrapper;
-        transform: translateX(-50%);
+        margin: 0 auto;
         h2 {
             color: white;
         }
@@ -107,6 +103,7 @@ a {
         height: 48px;
         background-color: white;
         border-radius: 50%;
+        margin-bottom: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -115,16 +112,11 @@ a {
         }
     }
     .c-hero__content {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
+        flex: 1;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        margin-bottom: 40px;
-        h2 {
-            margin-bottom: 180px;
-        }
+        text-align: center;
     }
 }
 .c-hero-header {
@@ -133,6 +125,7 @@ a {
     align-content: center;
     color: white;
     padding: 24px;
+    width: 100%;
 
     nav {
         @extend %list-flex;
@@ -156,6 +149,10 @@ a {
 }
 
 @media (max-width: 767px) {
+    .c-hero,
+    .c-hero__wrapper {
+        height: $height-header-mobile;
+    }
     .c-menu-mobile {
         display: inline-block !important;
     }
@@ -181,6 +178,7 @@ a {
     .c-nav-mobile.is-active {
         visibility: visible !important;
         opacity: 1;
+        z-index: 2;
     }
 }
 
